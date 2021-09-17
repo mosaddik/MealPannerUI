@@ -1,0 +1,57 @@
+<div class="row" [formGroup]="bararForm">
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-header>Bazzar Enry</nb-card-header>
+        <nb-card-body>
+            <div class="row">
+                <label>Item</label>
+                <input type="text"  name="Item" formControlName="Item" nbInput fullWidth placeholder="Item"/>
+            </div>
+            
+            <div class="row">
+                <label>Price</label>
+                <input  name="Price" formControlName="Price" type="number" min="0" max="100" nbInput fullWidth placeholder="price" style="width: 100%;">
+            </div>
+
+            <div class="row">
+                <label>Quantity</label>
+                <input  name="Quantity" formControlName="Quantity" type="number" min="0" max="100" nbInput fullWidth placeholder="Quantity" style="width: 100%;">
+            </div>
+
+
+            <div class="row">
+                <label>Unit</label>
+                <input type="text"  name="Unit" formControlName="Unit" nbInput fullWidth placeholder="Unit" style="width: 100%;"/>
+            </div>
+
+
+
+            <div class="row" style="margin-top: 10px;">
+                <label style="width: 100%;">Bazzar By</label>
+                <nb-select name="BazzarBy" formControlName="BazzarBy"  selected="1" style="width:100%">
+                    <nb-option value="1">Mosaddik</nb-option>
+                    <nb-option value="2">Tavir</nb-option>
+                    <nb-option value="3">Antim</nb-option>
+                  </nb-select>
+            </div>
+
+
+            <div class="row">
+                <label for="" style="width: -moz-available;"> Purchase Date </label>
+                <input nbInput
+                    name="PurchaseDate"
+                    formControlName="PurchaseDate" 
+                    placeholder="Purchase Date"
+                    [nbDatepicker]="formpicker"
+                >
+            <nb-datepicker #formpicker></nb-datepicker>
+            </div>
+        </nb-card-body>
+      </nb-card>
+
+    <input type="submit" class="btn btn-primary" (click)="EntryBazar()" value="Entry Bazar">
+    </div>
+    
+   
+  </div>
+  
