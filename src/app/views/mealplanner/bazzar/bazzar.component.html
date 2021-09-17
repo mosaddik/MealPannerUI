@@ -1,0 +1,103 @@
+<div class="col-sm-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <button type="button" class="btn btn-primary" (click)="open(content)">Add Items</button>
+      </div>
+      <div class="card-body">
+        <table datatable class="row-border hover table"  >
+          <thead>
+            <tr>
+                  <th> Bazzar Item</th>
+                  <th> Price</th>
+                  <th> Quantity</th>
+                  <th> Bazzar Date</th>
+                  <th> Bazzar by</th>
+                  <th> Action </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let bazzar of bazzarlist | async ; index as i;">
+              <td>{{ bazzar.bazzar_item }}</td>
+              <td>{{ bazzar.price }}</td>
+              <td>{{ bazzar.quantity }} &nbsp; {{ bazzar.unit }}</td>
+              <td>{{ bazzar.bazzar_date | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ bazzar.user.first_name}} {{ bazzar.user.last_name }}</td>
+              <td> 
+                  <button type="button" class="btn btn-warning">Edit</button>
+                  <button type="button" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<ng-template #content let-modal>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Add Bazzar</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="bararForm">
+      <div class="form-group">
+        <label for="Item">Item</label>
+        <input name="Item" formControlName="Item" type="text" class="form-control" id="Item" placeholder="Pleae Enter Item">
+      </div>
+      <div class="form-group">
+        <label for="Quantity">Quantity</label>
+        <input name="Quantity" formControlName="Quantity" type="text" class="form-control" id="Price" placeholder="Pleae Enter Price">
+      </div>
+
+
+      <div class="form-group">
+        <label for="Price">Price</label>
+        <input name="Price" formControlName="Price" type="text" class="form-control" id="Price" placeholder="Pleae Enter Price">
+      </div>
+
+      <div class="form-group">
+        <label for="Quantity">Bazzar By</label>
+        <select class="form-control" name="BazzarBy" formControlName="BazzarBy">
+          <option *ngFor="let users of userlist | async" 
+          [ngValue]="users.user_id"
+          [selected]="3"
+          >{{users.first_name}} &nbsp; {{users.last_name}}
+        </option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label>Bazzar By</label>
+        <select class="form-control" name="unit" formControlName="Unit">
+          <option value="KG" [selected]="true"> KG </option>
+          <option value="Litre"> Litre </option>
+          <option value="Pics"> Pics </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dateOfBirth">Bazzar Date</label>
+        <div class="input-group">
+          <input name="PurchaseDate" formControlName="PurchaseDate" class="form-control" placeholder="yyyy-mm-dd"
+          name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div> 
+    </form>
+</div>
+<div class="modal-footer">
+  <button type="button" 
+  class="btn btn-outline-dark" 
+  (click)="EntryBazar()">Save</button>
+</div>
+</ng-template>
+
+
+  
+  
