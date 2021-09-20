@@ -24,6 +24,11 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 
+
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
 const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
@@ -34,6 +39,8 @@ import {
   AppHeaderModule,
   AppFooterModule,
   AppSidebarModule,
+  
+  
 } from '@coreui/angular';
 
 // Import routing module
@@ -62,7 +69,8 @@ import { NgbDate,NgbModule } from '@ng-bootstrap/ng-bootstrap';
     IconModule,
     IconSetModule.forRoot(),
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,

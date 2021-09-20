@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BazzarComponent } from './bazzar/bazzar.component';
 import { TablesRoutingModule } from '../tables/tables-routing.module';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 
@@ -47,7 +46,6 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     NbIconModule,
     HttpClientModule,
     TablesRoutingModule,
-    Ng2SmartTableModule,
   ]
 })
 export class MealplannerModule { }
