@@ -1,0 +1,91 @@
+<div class="col-sm-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <button type="button" class="btn btn-primary" (click)="open(content)">Add Users</button>
+      </div>
+      <div class="card-body">
+        <table datatable class="row-border hover table"  >
+          <thead>
+            <tr>
+                  <th> Item No </th>
+                  <th> User Name</th>
+                  <th> Email</th>
+                  <th> Phone Number</th>
+                  <th> Action </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let user of userList | async ; index as i;">
+              <td>No # {{ i }}</td>
+              <td>{{ user.user.first_name}} &nbsp; &nbsp; {{ bazzar.user.last_name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone_number }} 
+              <td> 
+                  <button type="button" class="btn btn-warning">Edit</button>
+                  <button type="button" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+   <!-- Add New User Modal -->
+   
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add New Users</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label for="FristName">Frist Name  <span class="text-danger"> <b> * </b></span></label>
+            <input name="first_name" formControlName="first_name" type="text" class="form-control" id="first_name" placeholder="Please Enter Frist Name" required>
+            <span class="text-danger" *ngIf="(userForm.first_name.touched || submitted) && userForm.first_name.errors?.required"> <b><i class="fa fa-times" aria-hidden="true"></i>  Frist name is required !</b></span>
+          </div>
+
+          <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input name="last_name" formControlName="last_name" type="text" class="form-control" id="last_name" placeholder="Please Enter Last Name" required> 
+            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  Last name is required !</b></span>
+          </div>
+
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input name="email" formControlName="email" type="email" class="form-control" id="Email" placeholder="Pleae Enter Your Email" required>
+            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  Email is required !</b></span>  <br/>
+            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  Email is not valid !</b></span> <br/>
+            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  This email already exists !</b></span> 
+          </div>
+    
+    
+          <div class="form-group">
+            <label for="Passowrd">Password</label>
+            <input name="password" formControlName="password" type="password" class="form-control" id="Passowrd" placeholder="Please Enter Passowrd" required>
+            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  password is required !</b></span> <br/>
+            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  please give strong password !</b></span>
+          </div>
+
+          <div class="form-group">
+            <label for="ConfirmPassowrd">Confirm Password</label>
+            <input name="password" formControlName="confirmpassword" type="password" class="form-control" id="ConfirmPassword" placeholder="Pleae Confirm Passowrd" required>
+            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  Confirm password is required !</b></span> <br/>
+            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i> Password and confirm passowrd does not match !</b></span>
+
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" 
+      class="btn btn-outline-dark" 
+      (click)="AddNewUsers()">Save</button>
+    </div>
+    </ng-template>
+    

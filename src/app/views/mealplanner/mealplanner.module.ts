@@ -8,11 +8,13 @@ import { DataTablesModule } from "angular-datatables";
 import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDate,NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
   declarations: [
-    BazzarComponent
+    BazzarComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BazzarComponent } from './bazzar/bazzar.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'ManageBazzar',
     component:BazzarComponent
+  },
+  {
+    path: 'Users',
+    component:UserComponent
   },
 ];
 

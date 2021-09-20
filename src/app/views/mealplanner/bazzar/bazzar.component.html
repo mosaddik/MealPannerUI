@@ -61,9 +61,7 @@
       <div class="form-group">
         <label for="Quantity">Bazzar By</label>
         <select class="form-control" name="BazzarBy" formControlName="BazzarBy">
-          <option *ngFor="let users of userlist | async" 
-          [ngValue]="users.user_id"
-          [selected]="3"
+          <option *ngFor="let users of userlist | async"  [ngValue]="users.user_id" [selected]="3"
           >{{users.first_name}} &nbsp; {{users.last_name}}
         </option>
         </select>

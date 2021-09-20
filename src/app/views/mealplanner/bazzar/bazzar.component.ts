@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ModalDismissReasons, NgbDateStruct, NgbModal ,NgbDatepicker} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import { UserService } from '../user/user.service';
 import { MealplannerService } from './mealplanner.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { MealplannerService } from './mealplanner.service';
 })
 export class BazzarComponent implements OnInit {
 
-  constructor(private mealplannerService : MealplannerService,private modalService: NgbModal) { }
+  constructor(private mealplannerService : MealplannerService,private userService : UserService,private modalService: NgbModal) { }
 
   public bazzarlist : Observable<any>;
   public userlist : Observable<any>;
@@ -80,7 +81,7 @@ export class BazzarComponent implements OnInit {
   }
 
   getallusers(): void{
-    this.userlist  = this.mealplannerService.getallusers()
+    this.userlist  = this.userService.getallusers()
   }
 
 

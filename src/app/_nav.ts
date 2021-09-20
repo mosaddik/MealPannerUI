@@ -10,6 +10,15 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
+  {
+    name: 'Users',
+    url: '/MealPlanner/Users',
+    icon: 'icon-speedometer',
+    badge: {
+      variant: 'info',
+      text: 'NEW'
+    }
+  },
   // {
   //   title: true,
   //   name: 'Theme'
