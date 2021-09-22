@@ -21,6 +21,18 @@ export class CustomValidatorService {
   }
 
 
+  EmailValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (!control.value) {
+        return null;
+      }
+      const regex = new RegExp("^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+      const valid = regex.test(control.value);
+      return valid ? null : { invalidEmail: true };
+    };
+  }
+
+
   numberOnly(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
       if (!control.value) {

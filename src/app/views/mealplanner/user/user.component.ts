@@ -54,8 +54,14 @@ export class UserComponent implements OnInit {
     });
   }
 
+  get userFormControl() {
+    return this.userForm.controls;
+  }
+
   onSubmit(){
-    
+    if(this.userForm.status == "VALID"){
+      alert("Form Submmited Successfully!")
+    }
   }
 
   private getDismissReason(reason: any): string {

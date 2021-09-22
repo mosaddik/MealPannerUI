@@ -48,44 +48,39 @@
           <div class="form-group">
             <label for="FristName">Frist Name  <span class="text-danger"> <b> * </b></span></label>
             <input name="first_name" formControlName="first_name" type="text" class="form-control" id="first_name" placeholder="Please Enter Frist Name" required>
-            <span class="text-danger" *ngIf="(userForm.first_name.touched || submitted) && userForm.first_name.errors?.required"> <b><i class="fa fa-times" aria-hidden="true"></i>  Frist name is required !</b></span>
+            <span class="text-danger" *ngIf="(userFormControl.first_name.touched || submitted) && userFormControl.first_name.errors?.required"> <b><i class="fa fa-times" aria-hidden="true"></i>  Frist name is required !</b></span>
           </div>
 
           <div class="form-group">
             <label for="LastName">Last Name</label>
             <input name="last_name" formControlName="last_name" type="text" class="form-control" id="last_name" placeholder="Please Enter Last Name" required> 
-            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  Last name is required !</b></span>
+            <span class="text-danger" *ngIf="(userFormControl.last_name.touched || submitted) && userFormControl.last_name.errors?.required"> <b><i class="fa fa-times" aria-hidden="true"></i>  Last name is required !</b></span>
           </div>
 
           <div class="form-group">
             <label for="Email">Email</label>
-            <input name="email" formControlName="email" type="email" class="form-control" id="Email" placeholder="Pleae Enter Your Email" required>
-            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  Email is required !</b></span>  <br/>
-            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  Email is not valid !</b></span> <br/>
-            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  This email already exists !</b></span> 
+            <input name="email" formControlName="email"  type="email" class="form-control" id="Email" placeholder="Pleae Enter Your Email" required>
+            <span class="text-danger" *ngIf="(userFormControl.email.touched || submitted) && userFormControl.email.errors?.required" aria-hidden="true"> <b><i class="fa fa-times"></i>  Email is required !</b></span>  <br/>
+            <span class="text-danger" *ngIf="(userFormControl.email.touched || submitted) && userFormControl.email.errors?.email"> <b><i class="fa fa-times" aria-hidden="true"></i>  Email is not valid !</b></span> <br/>
           </div>
-    
     
           <div class="form-group">
             <label for="Passowrd">Password</label>
             <input name="password" formControlName="password" type="password" class="form-control" id="Passowrd" placeholder="Please Enter Passowrd" required>
-            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  password is required !</b></span> <br/>
-            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  please give strong password !</b></span>
+            <span class="text-danger" *ngIf="(userFormControl.password.touched || submitted) && userFormControl.password.errors?.required"> <b><i class="fa fa-times"  aria-hidden="true"></i>  password is required !</b></span> <br/>
+            <span class="text-danger" *ngIf="(userFormControl.password.touched || submitted) && userFormControl.password.errors?.invalidPassword"> <b><i class="fa fa-times" aria-hidden="true"></i>  please give strong password !</b></span>
           </div>
 
           <div class="form-group">
             <label for="ConfirmPassowrd">Confirm Password</label>
             <input name="password" formControlName="confirmpassword" type="password" class="form-control" id="ConfirmPassword" placeholder="Pleae Confirm Passowrd" required>
-            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i>  Confirm password is required !</b></span> <br/>
-            <span class="text-danger"> <b><i class="fa fa-times" aria-hidden="true"></i> Password and confirm passowrd does not match !</b></span>
-
+            <span class="text-danger" *ngIf="(userFormControl.confirmpassword.touched || submitted) && userFormControl.confirmpassword.errors?.required"> <b><i class="fa fa-times"  aria-hidden="true"></i>  Confirm password is required !</b></span> <br/>
+            <span class="text-danger" *ngIf="(userFormControl.confirmpassword.touched || submitted) && userFormControl.confirmpassword.errors?.passwordMismatch"> <b><i class="fa fa-times" aria-hidden="true"></i> Password and confirm passowrd does not match !</b></span>
           </div>
         </form>
     </div>
     <div class="modal-footer">
-      <button type="button" 
-      class="btn btn-outline-dark" 
-      (click)="AddNewUsers()">Save</button>
+      <button type="submit" (click)="onSubmit()"  class="btn btn-outline-dark"  >Save</button>
     </div>
     </ng-template>
     
